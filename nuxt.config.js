@@ -59,9 +59,7 @@ export default {
   },
 
   router: {
-    middleware: [
-      'auth'
-    ]
+    middleware: ['auth']
   },
 
   auth: {
@@ -83,7 +81,7 @@ export default {
         grantType: 'authorization_code',
         clientId: 'linktree',
         scope: [],
-        codeChallengeMethod: 'S256'
+        codeChallengeMethod: 'plain'
       }
     },
     redirect: {
