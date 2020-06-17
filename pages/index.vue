@@ -1,46 +1,23 @@
 <template>
   <section class="section">
-    <div class="columns is-mobile">
-      <card title="Free" icon="github-circle">
-        Open source on
-        <a href="https://github.com/buefy/buefy">
-          GitHub
-        </a>
-      </card>
-
-      <card title="Responsive" icon="cellphone-link">
-        <b class="has-text-grey">
-          Every
-        </b>
-        component is responsive
-      </card>
-
-      <card title="Modern" icon="alert-decagram">
-        Built with
-        <a href="https://vuejs.org/">
-          Vue.js
-        </a>
-        and
-        <a href="http://bulma.io/">
-          Bulma
-        </a>
-      </card>
-
-      <card title="Lightweight" icon="arrange-bring-to-front">
-        No other internal dependency
-      </card>
-    </div>
+    <b-button
+      @click="login">
+      Login
+    </b-button>
   </section>
 </template>
 
-<script>
-import Card from '~/components/Card'
+<script lang=ts>
+import { Vue, Component } from 'vue-property-decorator';
 
-export default {
-  name: 'HomePage',
+@Component
+export default class IndexView extends Vue {
+  login() {
+    this.$auth.loginWith('oauth2').then(() => {console.log('test')});
+  }
 
-  components: {
-    Card
+  created() {
+    this.$axios.$get('http://localhost:3001/entries/abc');
   }
 }
 </script>

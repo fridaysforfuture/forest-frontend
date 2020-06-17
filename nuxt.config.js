@@ -40,6 +40,7 @@ export default {
     'nuxt-buefy',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
     '@nuxtjs/pwa'
   ],
   /*
@@ -54,6 +55,40 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(_config, _ctx) {}
+  },
+
+  router: {
+    middleware: [
+      'auth'
+    ]
+  },
+
+  auth: {
+    strategies: {
+      local: false,
+      oauth2: {
+        endpoints: {
+          authorization:
+            'https://auth.ernste-nacht.com/auth/realms/nextcloud/protocol/openid-connect/auth',
+          token:
+            'https://auth.ernste-nacht.com/auth/realms/nextcloud/protocol/openid-connect/token',
+          userInfo:
+            'https://auth.ernste-nacht.com/auth/realms/nextcloud/protocol/openid-connect/userinfo'
+        },
+        token: {
+          maxAge: 600
+        },
+        responseType: 'code',
+        grantType: 'authorization_code',
+        clientId: 'linktree',
+        scope: [],
+        codeChallengeMethod: 'S256'
+      }
+    },
+    redirect: {
+      login: '/',
+      callback: '/'
+    }
   }
 }

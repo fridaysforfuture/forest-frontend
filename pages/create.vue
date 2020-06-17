@@ -16,18 +16,16 @@
       <label>
         Links:
       </label>
-      <b-field v-for="link of links">
+      <b-field v-for="(link, i) of links" :v-key="i">
         <b-field label="Text">
-          <b-input
-            v-model="link.text"/>
+          <b-input v-model="link.text"/>
         </b-field>
         <b-field label="URL">
           <b-input
             v-model="link.url"/>
         </b-field>
       </b-field>
-      <b-button
-        @click="addLink">
+      <b-button @click="addLink">
         Neuer Link
       </b-button>
     </section>
@@ -38,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-class-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 import axios from 'axios';
 
 @Component 
@@ -58,7 +56,7 @@ export default class CreateView extends Vue {
   }
 
   submit() {
-    axios.put(`http://localhost:3001/entries/${this.name}`,
+    this.$axios.put(`http://localhost:3001/entries/${this.name}`,
       {
         friendlyName: this.friendlyName,
         links: this.links
