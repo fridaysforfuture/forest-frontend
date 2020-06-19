@@ -1,7 +1,8 @@
 <template>
   <section class="section">
     <b-button
-      @click="login">
+      @click="login"
+      v-if="!$auth.loggedIn">
       Login
     </b-button>
   </section>
