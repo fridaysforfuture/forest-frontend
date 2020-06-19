@@ -52,7 +52,7 @@ export default {
         {
           title: 'My Forest',
           icon: 'tree',
-          to: { name: 'user' }
+          to: { name: 'user-forest' }
         }
       ]
     }
