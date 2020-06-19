@@ -19,7 +19,7 @@
     </nav>
 
     <section class="main-content columns">
-      <aside class="column is-2 section">
+      <aside class="column is-3 section">
         <p class="menu-label is-hidden-touch">
           General
         </p>
@@ -50,9 +50,9 @@ export default {
           to: { name: 'index' }
         },
         {
-          title: 'Inspire',
-          icon: 'lightbulb',
-          to: { name: 'inspire' }
+          title: 'My Forest',
+          icon: 'tree',
+          to: { name: 'user' }
         }
       ]
     }
