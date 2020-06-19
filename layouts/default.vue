@@ -1,41 +1,22 @@
 <template>
   <div>
-    <nav
-      class="navbar header has-shadow is-primary"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <img src="~assets/buefy.png" alt="Buefy" height="28" />
-        </a>
+    <b-navbar>
+      <template slot="brand">
+        <b-navbar-item tag="router-link" :to="{ name: 'index' }">
+          <img src="~assets/buefy.png" alt="Forest" height=28 />
+        </b-navbar-item>
+      </template>
+      <template slot="start">
+        <b-navbar-item
+          v-for="(item, key) of items" :key="key"
+          tag="nuxt-link"
+          :to="item.to">
+          <b-icon :icon="item.icon" /> {{ item.title }}
+        </b-navbar-item>
+      </template>
+    </b-navbar>
 
-        <div class="navbar-burger">
-          <span />
-          <span />
-          <span />
-        </div>
-      </div>
-    </nav>
-
-    <section class="main-content columns">
-      <aside class="column is-3 section">
-        <p class="menu-label is-hidden-touch">
-          General
-        </p>
-        <ul class="menu-list">
-          <li v-for="(item, key) of items" :key="key">
-            <nuxt-link :to="item.to" exact-active-class="is-active">
-              <b-icon :icon="item.icon" /> {{ item.title }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </aside>
-
-      <div class="container column is-10">
-        <nuxt />
-      </div>
-    </section>
+    <nuxt />
   </div>
 </template>
 
@@ -52,7 +33,7 @@ export default {
         {
           title: 'My Forest',
           icon: 'tree',
-          to: { name: 'user-forest' }
+          to: { path: '/user/forest' }
         }
       ]
     }
