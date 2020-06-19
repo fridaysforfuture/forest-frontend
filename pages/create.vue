@@ -1,34 +1,8 @@
 <template>
   <form
     @submit.prevent="submit">
-    <b-field
-      label="Name">
-      <b-input
-        v-model="name"
-        required />
-    </b-field>
-    <b-field label="Freundlicher Name">
-      <b-input
-        v-model="friendlyName"
-        required />
-    </b-field>
-    <section class="section">
-      <label>
-        Links:
-      </label>
-      <b-field v-for="(link, i) of links" :v-key="i">
-        <b-field label="Text">
-          <b-input v-model="link.text"/>
-        </b-field>
-        <b-field label="URL">
-          <b-input
-            v-model="link.url"/>
-        </b-field>
-      </b-field>
-      <b-button @click="addLink">
-        Neuer Link
-      </b-button>
-    </section>
+    <tree-view v-model="tree">
+    </tree-view>
     <b-button native-type="submit">
       Eintrag erstellen
     </b-button>
@@ -38,28 +12,28 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import axios from 'axios';
+import TreeView from '@/components/treeView.vue';
 
-@Component 
+@Component({
+  components: {
+    TreeView
+  }
+})
 export default class CreateView extends Vue {
-  name = '';
-  friendlyName = '';
-  links = [{
-    text: '',
-    url: ''
-  }];
-
-  addLink() {
-    this.links.push({
+  tree = {
+    name: '',
+    friendlyName: '',
+    links: [{
       text: '',
       url: ''
-    });
-  }
+    }]
+  };
 
   submit() {
-    this.$axios.put(`http://localhost:3001/entries/${this.name}`,
+    this.$axios.put(`http://localhost:3001/entries/${this.tree.name}`,
       {
-        friendlyName: this.friendlyName,
-        links: this.links
+        friendlyName: this.tree.friendlyName,
+        links: this.tree.links
       });
   }
 }
