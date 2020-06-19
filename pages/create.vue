@@ -1,12 +1,15 @@
 <template>
-  <form
-    @submit.prevent="submit">
-    <tree-view v-model="tree">
-    </tree-view>
-    <b-button native-type="submit">
-      Eintrag erstellen
-    </b-button>
-  </form>
+  <section class="section">
+    <form
+      @submit.prevent="submit"
+      class="container is-mobile">
+      <tree-view v-model="tree">
+      </tree-view>
+      <b-button native-type="submit">
+        Eintrag erstellen
+      </b-button>
+    </form>
+  </section>
 </template>
 
 <script lang="ts">
