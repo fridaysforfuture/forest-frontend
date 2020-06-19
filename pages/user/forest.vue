@@ -18,6 +18,11 @@
         </div>
       </div>
     </b-collapse>
+    <b-button>
+      <nuxt-link to="/create">
+        Plant new Tree
+      </nuxt-link>
+    </b-button>
   </section>
 </template>
 
