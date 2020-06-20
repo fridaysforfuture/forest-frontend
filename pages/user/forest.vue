@@ -35,7 +35,7 @@ export default class UserView extends Vue {
       `http://localhost:3001/user/${this.$auth.user.username}`,
     );
     this.loading = false;
-    this.entries = response.data;
+    this.entries = response.data.ownEntries;
   }
 }
 </script>

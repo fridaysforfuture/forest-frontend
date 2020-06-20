@@ -15,8 +15,6 @@ export default class IndexView extends Vue {
     this.$auth.loginWith('oauth2');
   }
 
-  created() {
-    this.$axios.$get('http://localhost:3001/entries/abc');
-  }
+  created() {}
 }
 </script>
