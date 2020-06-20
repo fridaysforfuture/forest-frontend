@@ -30,15 +30,15 @@ export default {
         {
           title: 'Home',
           icon: 'home',
-          to: { name: 'index' }
+          to: { name: 'index' },
         },
         {
           title: 'My Forest',
           icon: 'tree',
-          to: { path: '/user/forest' }
-        }
-      ]
+          to: { path: '/user/forest' },
+        },
+      ],
     };
-  }
+  },
 };
 </script>

@@ -15,8 +15,8 @@ import TreeView from '@/components/treeView.vue';
 
 @Component({
   components: {
-    TreeView
-  }
+    TreeView,
+  },
 })
 export default class CreateView extends Vue {
   tree = {
@@ -25,15 +25,15 @@ export default class CreateView extends Vue {
     links: [
       {
         text: '',
-        url: ''
-      }
-    ]
+        url: '',
+      },
+    ],
   };
 
   submit() {
     this.$axios.put(`http://localhost:3001/entries/${this.tree.name}`, {
       friendlyName: this.tree.friendlyName,
-      links: this.tree.links
+      links: this.tree.links,
     });
   }
 }

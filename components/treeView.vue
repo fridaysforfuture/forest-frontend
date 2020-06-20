@@ -59,7 +59,7 @@ export default class TreeView extends Vue {
   addLink() {
     this.links.push({
       text: '',
-      url: ''
+      url: '',
     });
   }
 }

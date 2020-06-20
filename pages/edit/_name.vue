@@ -10,15 +10,15 @@ import TreeView from '@/components/treeView.vue';
 
 @Component({
   components: {
-    TreeView
-  }
+    TreeView,
+  },
 })
 export default class CreateView extends Vue {
   entry = null;
 
   async created() {
     const response = await this.$axios.get(
-      `http://localhost:3001/entries/${this.$route.params.name}`
+      `http://localhost:3001/entries/${this.$route.params.name}`,
     );
     this.entry = response.data;
   }
