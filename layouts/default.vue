@@ -3,14 +3,16 @@
     <b-navbar>
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ name: 'index' }">
-          <img src="~assets/buefy.png" alt="Forest" height=28 />
+          <img src="~assets/buefy.png" alt="Forest" height="28" />
         </b-navbar-item>
       </template>
       <template slot="start">
         <b-navbar-item
-          v-for="(item, key) of items" :key="key"
+          v-for="(item, key) of items"
+          :key="key"
           tag="nuxt-link"
-          :to="item.to">
+          :to="item.to"
+        >
           <b-icon :icon="item.icon" /> {{ item.title }}
         </b-navbar-item>
       </template>
@@ -36,7 +38,7 @@ export default {
           to: { path: '/user/forest' }
         }
       ]
-    }
+    };
   }
-}
+};
 </script>
