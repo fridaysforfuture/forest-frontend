@@ -31,10 +31,17 @@ export default class CreateView extends Vue {
   };
 
   submit() {
-    this.$axios.put(`http://localhost:3001/entries/${this.tree.name}`, {
-      friendlyName: this.tree.friendlyName,
-      links: this.tree.links,
-    });
+    this.$axios
+      .put(`http://localhost:3001/entries/${this.tree.name}`, {
+        friendlyName: this.tree.friendlyName,
+        links: this.tree.links,
+      })
+      .then(() => {
+        this.$router.push('/');
+      })
+      .catch((e) => {
+        alert(e);
+      });
   }
 }
 </script>
