@@ -1,6 +1,26 @@
 <template>
   <section class="section">
-    <tree-view v-if="entry !== null" v-model="entry"> </tree-view>
+    <tree-view
+      v-if="entry !== null"
+      v-model="entry"
+      disable-name-edit>
+    </tree-view>
+     <b-field grouped>
+      <div class="control is-expanded">
+        <b-button @click="cancel">
+          Abbrechen
+        </b-button>
+      </div>
+      <div class="control">
+        <b-button
+          tag="input"
+          native-type="submit"
+          type="is-success"
+          value="Speichern"
+          @click="save">
+        </b-button>
+      </div>
+    </b-field>
   </section>
 </template>
 
@@ -14,7 +34,7 @@ import TreeView from '@/components/treeView.vue';
   },
 })
 export default class CreateView extends Vue {
-  entry = null;
+  entry: null | any = null;
 
   async created() {
     const response = await this.$axios.get(
@@ -22,5 +42,16 @@ export default class CreateView extends Vue {
     );
     this.entry = response.data;
   }
+  cancel() {
+    this.$router.push({ name: 'user-forest' });
+  }
+
+  save() {
+    if(this.entry) {
+      this.$axios.put(`http://localhost:3001/entries/${this.entry.name}`,
+        this.entry);
+      this.$router.push({ name: 'user-forest' });
+    }
+  } 
 }
 </script>
