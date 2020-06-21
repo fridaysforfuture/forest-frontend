@@ -7,7 +7,11 @@
       animation="slide"
       :open="true"
     >
-      <div slot="trigger" class="card-header" role="button" @click="editCard">
+      <div
+        slot="trigger"
+        class="card-header"
+        role="button"
+        @click="editCard(entry.name)">
         <div class="card-header-title">
           {{ entry.friendlyName }}
           {{ entry.friendlyName === entry.name ? '' : entry.name }}
@@ -36,6 +40,10 @@ export default class UserView extends Vue {
     );
     this.loading = false;
     this.entries = response.data.ownEntries;
+  }
+
+  editCard(name: string) {
+    this.$router.push({ name: 'edit-name', params: { name } });
   }
 }
 </script>

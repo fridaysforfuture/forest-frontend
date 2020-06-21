@@ -1,7 +1,10 @@
 <template>
-  <div class="container">
+  <form class="container">
     <b-field label="Name">
-      <b-input v-model="name" required />
+      <b-input
+        v-model="name"
+        required
+        :disabled="disableNameEdit"/>
     </b-field>
     <b-field label="Freundlicher Name">
       <b-input v-model="friendlyName" required />
@@ -22,7 +25,7 @@
         Neuer Link
       </b-button>
     </section>
-  </div>
+  </form>
 </template>
 
 <script lang="ts">
@@ -31,6 +34,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class TreeView extends Vue {
   @Prop(Object) value!: any;
+  @Prop(Boolean) disableNameEdit!: boolean;
 
   get name() {
     return this.value.name;
