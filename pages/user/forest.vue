@@ -11,7 +11,8 @@
         slot="trigger"
         class="card-header"
         role="button"
-        @click="editCard(entry.name)">
+        @click="editCard(entry.name)"
+      >
         <div class="card-header-title">
           {{ entry.friendlyName }}
           {{ entry.friendlyName === entry.name ? '' : entry.name }}
