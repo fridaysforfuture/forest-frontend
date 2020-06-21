@@ -12,6 +12,9 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test": "jest"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "dependencies": {
     "@nuxtjs/auth-next": "^5.0.0-1592174780.948291",
     "@nuxtjs/axios": "^5.11.0",
@@ -25,16 +28,17 @@
     "@nuxt/typescript-build": "^0.6.0",
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^6.1.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1",
     "@vue/test-utils": "^1.0.0-beta.27",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-prettier": "^3.1.2",
     "jest": "^24.1.0",
-    "vue-jest": "^4.0.0-0",
-    "ts-jest": "^25.0.0"
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.0.0",
+    "vue-jest": "^4.0.0-0"
   }
 }
