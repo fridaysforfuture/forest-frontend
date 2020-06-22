@@ -32,7 +32,7 @@ export default class CreateView extends Vue {
 
   submit() {
     this.$axios
-      .put(`http://localhost:3001/entries/${this.tree.name}`, {
+      .$put(`entries/${this.tree.name}`, {
         friendlyName: this.tree.friendlyName,
         links: this.tree.links,
       })

@@ -35,10 +35,7 @@ export default class CreateView extends Vue {
   entry: null | any = null;
 
   async created() {
-    const response = await this.$axios.get(
-      `http://localhost:3001/entries/${this.$route.params.name}`,
-    );
-    this.entry = response.data;
+    this.entry = await this.$axios.$get(`entries/${this.$route.params.name}`);
   }
 
   cancel() {
@@ -47,10 +44,7 @@ export default class CreateView extends Vue {
 
   save() {
     if (this.entry) {
-      this.$axios.put(
-        `http://localhost:3001/entries/${this.entry.name}`,
-        this.entry,
-      );
+      this.$axios.$put(`entries/${this.entry.name}`, this.entry);
       this.$router.push({ name: 'user-forest' });
     }
   }

@@ -36,9 +36,7 @@ export default class UserView extends Vue {
   loading = true;
 
   async created() {
-    const response = await this.$axios.get(
-      `http://localhost:3001/user/${this.$auth.user.username}`,
-    );
+    const response = await this.$axios.get(`user/${this.$auth.user.username}`);
     this.loading = false;
     this.entries = response.data.ownEntries;
   }
