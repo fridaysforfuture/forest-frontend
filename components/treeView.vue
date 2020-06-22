@@ -1,30 +1,45 @@
 <template>
-  <form class="container">
+  <form
+    id="tree-view"
+    class="container"
+    @submit.prevent="$emit('submit', event)"
+  >
     <b-field label="Name">
       <b-input v-model="name" required :disabled="disableNameEdit" />
     </b-field>
     <b-field label="Freundlicher Name">
       <b-input v-model="friendlyName" required />
     </b-field>
-    <section class="section">
-      <label>
+    <section class="field">
+      <label class="label">
         Links:
       </label>
-      <b-field v-for="(link, i) of links" :key="i">
-        <b-field label="Text">
-          <b-input v-model="link.text" />
+      <b-field
+        v-for="(link, i) of links"
+        :key="i"
+        horizontal
+        custom-class="is-hidden"
+        class="box"
+      >
+        <b-field label="Text" label-position="on-border">
+          <b-input v-model="link.text" required />
         </b-field>
-        <b-field label="URL">
-          <b-input v-model="link.url" />
+        <b-field label="URL" label-position="on-border">
+          <b-input v-model="link.url" required type="url" />
         </b-field>
+        <b-button
+          icon-right="delete"
+          type="is-danger"
+          expanded
+          @click="removeLink(i)"
+        />
       </b-field>
-      <b-button @click="addLink">
-        Neuer Link
+      <b-button expanded icon-right="plus" size="is-medium" @click="addLink">
       </b-button>
     </section>
   </form>
 </template>
-
+<style></style>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
@@ -62,6 +77,10 @@ export default class TreeView extends Vue {
       text: '',
       url: '',
     });
+  }
+
+  removeLink(index: number) {
+    this.links.splice(index, 1);
   }
 }
 </script>

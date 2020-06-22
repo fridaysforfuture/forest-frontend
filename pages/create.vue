@@ -1,11 +1,18 @@
 <template>
   <section class="section">
-    <form class="container is-mobile" @submit.prevent="submit">
-      <tree-view v-model="tree"> </tree-view>
-      <b-button native-type="submit">
-        Eintrag erstellen
-      </b-button>
-    </form>
+    <tree-view v-model="tree" @submit="submit" />
+    <b-field grouped>
+      <div class="control is-expanded">
+        <b-button @click="cancel">
+          Abbrechen
+        </b-button>
+      </div>
+      <div class="control is-success">
+        <b-button native-type="submit" class="is-success" form="tree-view">
+          Eintrag erstellen
+        </b-button>
+      </div>
+    </b-field>
   </section>
 </template>
 
@@ -37,7 +44,7 @@ export default class CreateView extends Vue {
         links: this.tree.links,
       })
       .then(() => {
-        this.$router.push('/');
+        this.$router.push({ name: 'user-forest' });
       })
       .catch((e) => {
         alert(e);
