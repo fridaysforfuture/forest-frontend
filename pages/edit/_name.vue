@@ -1,11 +1,8 @@
 <template>
   <section class="section">
-    <tree-view
-      v-if="entry !== null"
-      v-model="entry"
-      disable-name-edit>
+    <tree-view v-if="entry !== null" v-model="entry" disable-name-edit>
     </tree-view>
-     <b-field grouped>
+    <b-field grouped>
       <div class="control is-expanded">
         <b-button @click="cancel">
           Abbrechen
@@ -17,7 +14,8 @@
           native-type="submit"
           type="is-success"
           value="Speichern"
-          @click="save">
+          @click="save"
+        >
         </b-button>
       </div>
     </b-field>
@@ -42,16 +40,19 @@ export default class CreateView extends Vue {
     );
     this.entry = response.data;
   }
+
   cancel() {
     this.$router.push({ name: 'user-forest' });
   }
 
   save() {
-    if(this.entry) {
-      this.$axios.put(`http://localhost:3001/entries/${this.entry.name}`,
-        this.entry);
+    if (this.entry) {
+      this.$axios.put(
+        `http://localhost:3001/entries/${this.entry.name}`,
+        this.entry,
+      );
       this.$router.push({ name: 'user-forest' });
     }
-  } 
+  }
 }
 </script>

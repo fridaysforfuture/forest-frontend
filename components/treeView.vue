@@ -1,10 +1,7 @@
 <template>
   <form class="container">
     <b-field label="Name">
-      <b-input
-        v-model="name"
-        required
-        :disabled="disableNameEdit"/>
+      <b-input v-model="name" required :disabled="disableNameEdit" />
     </b-field>
     <b-field label="Freundlicher Name">
       <b-input v-model="friendlyName" required />
