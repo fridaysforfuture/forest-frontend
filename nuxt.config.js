@@ -89,7 +89,7 @@ export default {
     },
     redirect: {
       login: '/',
-      callback: '/',
+      callback: '/login',
     },
   },
 };
