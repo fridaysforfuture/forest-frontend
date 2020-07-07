@@ -3,6 +3,9 @@
     <b-button v-if="!$auth.loggedIn" @click="login">
       Login
     </b-button>
+    <b-button v-else @click="logout">
+      Logout
+    </b-button>
   </section>
 </template>
 
@@ -13,6 +16,10 @@ import { Vue, Component } from 'vue-property-decorator';
 export default class IndexView extends Vue {
   login() {
     this.$auth.loginWith('oauth2');
+  }
+
+  logout() {
+    this.$auth.logout();
   }
 
   created() {}
