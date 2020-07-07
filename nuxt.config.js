@@ -70,12 +70,9 @@ export default {
       local: false,
       oauth2: {
         endpoints: {
-          authorization:
-            'https://auth.ernste-nacht.com/auth/realms/nextcloud/protocol/openid-connect/auth',
-          token:
-            'https://auth.ernste-nacht.com/auth/realms/nextcloud/protocol/openid-connect/token',
-          userInfo:
-            'https://auth.ernste-nacht.com/auth/realms/nextcloud/protocol/openid-connect/userinfo',
+          authorization: 'https://auth.websiteag.lol/auth',
+          token: 'https://auth.websiteag.lol/token',
+          userInfo: 'https://auth.websiteag.lol/userinfo',
         },
         token: {
           maxAge: 600,
