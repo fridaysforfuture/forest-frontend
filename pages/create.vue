@@ -35,6 +35,10 @@ export default class CreateView extends Vue {
         url: '',
       },
     ],
+    socialLinks: {
+      instagram: '',
+      facebook: '',
+    },
   };
 
   submit() {

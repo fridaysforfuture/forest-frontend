@@ -4,10 +4,10 @@
     class="container"
     @submit.prevent="$emit('submit', event)"
   >
-    <b-field label="Name">
+    <b-field label="Name:">
       <b-input v-model="name" required :disabled="disableNameEdit" />
     </b-field>
-    <b-field label="Freundlicher Name">
+    <b-field label="Anzeigename:">
       <b-input v-model="friendlyName" required />
     </b-field>
     <section class="field">
@@ -37,9 +37,23 @@
       <b-button expanded icon-right="plus" size="is-medium" @click="addLink">
       </b-button>
     </section>
+    <section v-if="Object.keys(value.socialLinks).length > 0" class="field">
+      <label class="label">
+        Social-Media-Links:
+      </label>
+      <b-field v-for="(_, key) in value.socialLinks" :key="key">
+        <b-field :label="key + ':'" horizontal class="social-link">
+          <b-input v-model="value.socialLinks[key]" type="url" />
+        </b-field>
+      </b-field>
+    </section>
   </form>
 </template>
-<style></style>
+<style>
+.social-link {
+  text-transform: capitalize;
+}
+</style>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
