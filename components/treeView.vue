@@ -4,15 +4,41 @@
     class="container"
     @submit.prevent="$emit('submit', event)"
   >
-    <b-field label="Name:">
+    <b-field>
+      <template slot="label" class="has-text-weight-bold">
+        <span class="has-text-weight-bold is-size-4"> Name: </span>
+        <b-icon
+          icon="information"
+          type="is-info"
+          custom-size="mdi-24px"
+          title="Der Link unter dem der Linktree erreichbar ist"
+        />
+      </template>
       <b-input v-model="name" required :disabled="disableNameEdit" />
     </b-field>
-    <b-field label="Anzeigename:">
+    <b-field>
+      <template slot="label" class="has-text-weight-bold">
+        <span class="has-text-weight-bold is-size-4"> Anzeigename: </span>
+        <b-icon
+          icon="information"
+          type="is-info"
+          custom-size="mdi-24px"
+          title="Der Titel, der über dem Linktree angzeigt wird"
+        />
+      </template>
       <b-input v-model="friendlyName" required />
     </b-field>
     <section class="field">
       <label class="label">
-        Links:
+        <span class="has-text-weight-bold is-size-4">
+          Links:
+        </span>
+        <b-icon
+          icon="information"
+          type="is-info"
+          custom-size="mdi-24px"
+          title="Die Links des Linktrees, die 'Äste'"
+        />
       </label>
       <b-field
         v-for="(link, i) of links"
@@ -38,8 +64,14 @@
       </b-button>
     </section>
     <section v-if="Object.keys(value.socialLinks).length > 0" class="field">
-      <label class="label">
+      <label class="label is-size-4 has-text-weight-bold">
         Social-Media-Links:
+        <b-icon
+          icon="information"
+          type="is-info"
+          custom-size="mdi-24px"
+          title="Die Social-Media-Links, die unter dem Linktree angezeigt werden."
+        />
       </label>
       <b-field v-for="(_, key) in value.socialLinks" :key="key">
         <b-field :label="key + ':'" horizontal class="social-link">
