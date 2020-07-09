@@ -38,14 +38,22 @@ export default class CreateView extends Vue {
     socialLinks: {
       instagram: '',
       facebook: '',
+      twitter: '',
+      youtube: '',
+      website: '',
     },
   };
+
+  cancel() {
+    this.$router.back();
+  }
 
   submit() {
     this.$axios
       .$put(`entries/${this.tree.name}`, {
         friendlyName: this.tree.friendlyName,
         links: this.tree.links,
+        socialLinks: this.tree.socialLinks,
       })
       .then(() => {
         this.$router.push({ name: 'user-forest' });

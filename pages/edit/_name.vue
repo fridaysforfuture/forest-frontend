@@ -36,7 +36,7 @@ import TreeView from '@/components/treeView.vue';
     TreeView,
   },
 })
-export default class CreateView extends Vue {
+export default class EditView extends Vue {
   entry: null | any = null;
 
   async created() {
