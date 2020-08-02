@@ -28,7 +28,12 @@
       >
         <div class="card-header-title">
           {{ entry.friendlyName }}
-          {{ entry.friendlyName === entry.name ? '' : entry.name }}
+          <a
+            href="'https://linktree.websiteag.lol/' + entry.name"
+            class="tree-link"
+          >
+            {{ ' linktree.websiteag.lol/' + entry.name }}
+          </a>
         </div>
       </div>
     </b-collapse>
@@ -39,6 +44,12 @@
     </b-button>
   </section>
 </template>
+
+<style>
+.tree-link {
+  margin-left: 0.7em;
+}
+</style>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
