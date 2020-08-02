@@ -103,7 +103,9 @@ export default class TreeView extends Vue {
   }
 
   set name(newName) {
-    this.value?.name = newName;
+    if (this.value) {
+      this.value.name = newName;
+    }
   }
 
   get friendlyName() {
