@@ -31,6 +31,7 @@
           <a
             :href="'https://linktree.websiteag.lol/' + entry.name"
             class="tree-link"
+            target="_blank"
           >
             {{ ' linktree.websiteag.lol/' + entry.name }}
           </a>
