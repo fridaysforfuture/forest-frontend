@@ -29,7 +29,7 @@
         <div class="card-header-title">
           {{ entry.friendlyName }}
           <a
-            href="'https://linktree.websiteag.lol/' + entry.name"
+            :href="'https://linktree.websiteag.lol/' + entry.name"
             class="tree-link"
           >
             {{ ' linktree.websiteag.lol/' + entry.name }}
