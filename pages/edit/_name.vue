@@ -38,7 +38,7 @@ export default class EditView extends Vue {
   }
 
   cancel() {
-    this.$router.push({ name: 'user-forest' });
+    this.$router.push({ name: 'index' });
   }
 
   save() {
