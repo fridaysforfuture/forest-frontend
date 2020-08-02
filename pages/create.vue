@@ -56,7 +56,7 @@ export default class CreateView extends Vue {
         socialLinks: this.tree.socialLinks,
       })
       .then(() => {
-        this.$router.push({ name: 'user-forest' });
+        this.$router.push({ name: 'index' });
       })
       .catch((e) => {
         alert(e);

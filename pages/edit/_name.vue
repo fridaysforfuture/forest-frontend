@@ -44,7 +44,7 @@ export default class EditView extends Vue {
   save() {
     if (this.entry) {
       this.$axios.$put(`entries/${this.entry.name}`, this.entry);
-      this.$router.push({ name: 'user-forest' });
+      this.$router.push({ name: 'index' });
     }
   }
 }
