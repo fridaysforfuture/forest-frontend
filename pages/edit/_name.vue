@@ -1,12 +1,6 @@
 <template>
   <section class="section">
-    <tree-view
-      v-if="entry !== null"
-      v-model="entry"
-      disable-name-edit
-      @submit="save"
-    >
-    </tree-view>
+    <tree-view v-model="entry" disable-name-edit @submit="save"> </tree-view>
     <b-field grouped>
       <div class="control is-expanded">
         <b-button @click="cancel">

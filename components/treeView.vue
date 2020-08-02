@@ -4,6 +4,7 @@
     class="container"
     @submit.prevent="$emit('submit', event)"
   >
+    <b-loading :active="!value"> </b-loading>
     <b-field>
       <template slot="label" class="has-text-weight-bold">
         <span class="has-text-weight-bold is-size-4"> Name: </span>
@@ -63,7 +64,10 @@
       <b-button expanded icon-right="plus" size="is-medium" @click="addLink">
       </b-button>
     </section>
-    <section v-if="Object.keys(value.socialLinks).length > 0" class="field">
+    <section
+      v-if="value && Object.keys(value.socialLinks).length > 0"
+      class="field"
+    >
       <label class="label is-size-4 has-text-weight-bold">
         Social-Media-Links:
         <b-icon
@@ -91,31 +95,35 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class TreeView extends Vue {
-  @Prop(Object) value!: any;
+  @Prop(Object) value: any;
   @Prop(Boolean) disableNameEdit!: boolean;
 
   get name() {
-    return this.value.name;
+    return this.value?.name;
   }
 
   set name(newName) {
-    this.value.name = newName;
+    this.value?.name = newName;
   }
 
   get friendlyName() {
-    return this.value.friendlyName;
+    return this.value?.friendlyName;
   }
 
   set friendlyName(newFriendlyName) {
-    this.value.friendlyName = newFriendlyName;
+    if (this.value) {
+      this.value.friendlyName = newFriendlyName;
+    }
   }
 
   get links() {
-    return this.value.links;
+    return this.value?.links;
   }
 
   set links(newLinks) {
-    this.value.links = newLinks;
+    if (this.value) {
+      this.value.links = newLinks;
+    }
   }
 
   addLink() {
