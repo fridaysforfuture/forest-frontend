@@ -84,7 +84,7 @@
       </b-field>
     </section>
     <div class="divider"></div>
-    <section v-if="$auth.user.sub === value.owner" class="field">
+    <section v-if="value && $auth.user.sub === value.owner" class="field">
       <label class="label">
         <span class="has-text-weight-bold is-size-4">
           Geteilt mit:
