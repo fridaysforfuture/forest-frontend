@@ -24,7 +24,7 @@
           icon="information"
           type="is-info"
           custom-size="mdi-24px"
-          title="Der Titel, der über dem Linktree angzeigt wird"
+          title="Der Titel, der über dem Linktree angezeigt wird"
         />
       </template>
       <b-input v-model="friendlyName" required />
@@ -84,7 +84,7 @@
       </b-field>
     </section>
     <div class="divider"></div>
-    <section class="field">
+    <section v-if="$auth.user.sub === value.owner" class="field">
       <label class="label">
         <span class="has-text-weight-bold is-size-4">
           Geteilt mit:

@@ -64,7 +64,9 @@ export default class IndexView extends Vue {
     if (this.$auth.loggedIn) {
       const response = await this.$axios.get(`user/${this.$auth.user.sub}`);
       this.loading = false;
-      this.entries = response.data.ownEntries;
+      this.entries = response.data.ownEntries.concat(
+        response.data.sharedEntries,
+      );
     }
   }
 
