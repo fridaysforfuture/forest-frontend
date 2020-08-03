@@ -42,6 +42,8 @@ export default class CreateView extends Vue {
       youtube: '',
       website: '',
     },
+    sharedTo: [],
+    owner: this.$auth.user.sub,
   };
 
   cancel() {
@@ -54,6 +56,7 @@ export default class CreateView extends Vue {
         friendlyName: this.tree.friendlyName,
         links: this.tree.links,
         socialLinks: this.tree.socialLinks,
+        sharedTo: this.tree.sharedTo,
       })
       .then(() => {
         this.$router.push({ name: 'index' });
