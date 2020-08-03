@@ -83,6 +83,39 @@
         </b-field>
       </b-field>
     </section>
+    <div class="divider"></div>
+    <section class="field">
+      <label class="label">
+        <span class="has-text-weight-bold is-size-4">
+          Geteilt mit:
+        </span>
+        <b-icon
+          icon="information"
+          type="is-info"
+          custom-size="mdi-24px"
+          title="Hier kannst du kontrollieren, wer noch den Linktree bearbeiten kann"
+        />
+      </label>
+      <b-field
+        v-for="(username, i) of sharedTo"
+        :key="i"
+        horizontal
+        custom-class="is-hidden"
+        class="box"
+      >
+        <b-field label="Username" label-position="on-border">
+          <b-input v-model="sharedTo[i]" required />
+        </b-field>
+        <b-button
+          icon-right="delete"
+          type="is-danger"
+          expanded
+          @click="removeShare(i)"
+        />
+      </b-field>
+      <b-button expanded icon-right="plus" size="is-medium" @click="addShare">
+      </b-button>
+    </section>
   </form>
 </template>
 <style>
@@ -128,6 +161,16 @@ export default class TreeView extends Vue {
     }
   }
 
+  get sharedTo() {
+    return this.value?.sharedTo;
+  }
+
+  set sharedTo(newSharedTo) {
+    if (this.value.sharedTo) {
+      this.value.sharedTo = newSharedTo;
+    }
+  }
+
   addLink() {
     this.links.push({
       text: '',
@@ -135,8 +178,16 @@ export default class TreeView extends Vue {
     });
   }
 
+  addShare() {
+    this.value.sharedTo.push('');
+  }
+
   removeLink(index: number) {
     this.links.splice(index, 1);
+  }
+
+  removeShare(index: number) {
+    this.sharedTo.splice(index, 1);
   }
 }
 </script>
