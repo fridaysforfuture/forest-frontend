@@ -3,7 +3,7 @@
     <b-navbar>
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ name: 'index' }">
-          <img src="~assets/buefy.png" alt="Forest" height="28" />
+          <img src="forest2.svg" alt="Forest" height="28" />
         </b-navbar-item>
       </template>
       <template slot="end">
