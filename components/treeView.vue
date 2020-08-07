@@ -52,7 +52,13 @@
           <b-input v-model="link.text" required />
         </b-field>
         <b-field label="URL" label-position="on-border">
-          <b-input v-model="link.url" required type="url" />
+          <b-input
+            v-model="link.url"
+            required
+            type="url"
+            oninvalid="this.setCustomValidity('URLs müssen mit https:// beginnen')"
+            oninput="this.setCustomValidity('')"
+          />
         </b-field>
         <b-button
           icon-right="delete"
@@ -79,7 +85,12 @@
       </label>
       <b-field v-for="(_, key) in value.socialLinks" :key="key">
         <b-field :label="key + ':'" horizontal class="social-link">
-          <b-input v-model="value.socialLinks[key]" type="url" />
+          <b-input
+            v-model="value.socialLinks[key]"
+            type="url"
+            oninvalid="this.setCustomValidity('URLs müssen mit https:// beginnen')"
+            oninput="this.setCustomValidity('')"
+          />
         </b-field>
       </b-field>
     </section>
