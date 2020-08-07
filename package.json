@@ -2,7 +2,7 @@
   "name": "forest-frontend",
   "version": "1.0.0",
   "description": "An open source linktree alternative",
-  "author": "Vincent Woltmann &amp; Karl Beecken",
+  "author": "Vincent Woltmann &amp; Karl Beecken &amp; Florian Fischer",
   "private": true,
   "scripts": {
     "dev": "nuxt",

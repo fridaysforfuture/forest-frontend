@@ -45,7 +45,7 @@
       </div>
     </b-collapse>
     <b-button>
-      <nuxt-link to="/create" icon-left="login">
+      <nuxt-link to="/create" icon-left="login" style="margin-top: 15px">
         Neuen Baum pflanzen
       </nuxt-link>
     </b-button>
@@ -56,7 +56,7 @@
 .tree-link {
   margin-left: 0.7em;
 }
-.main-logo{
+.main-logo {
   height: 200px;
   margin-left: auto;
   margin-right: auto;
@@ -71,7 +71,7 @@ import Logo from '@/components/Logo.vue';
 @Component({
   components: {
     Logo,
-  }
+  },
 })
 export default class IndexView extends Vue {
   entries = [];
