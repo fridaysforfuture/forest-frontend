@@ -5,9 +5,14 @@
     </h1>
     <p>
       Hallo lieber Aktivisti. Das hier ist Forest, unser Linktree-Service. Um
-      den zu benutzen brauchst du einen Cloud-Account. Logge dich Rechts oben
-      ein und dann kannst du dir selber Linktrees erstellen.
+      den zu benutzen brauchst du einen Cloud-Account. Logge dich ein und dann
+      kannst du dir selber Linktrees erstellen.
     </p>
+    <div style="margin-top: 20px">
+      <b-button v-if="!$auth.loggedIn" @click="login">
+        Login
+      </b-button>
+    </div>
   </section>
   <section v-else class="section">
     <h1 class="title">
