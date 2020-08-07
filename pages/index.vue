@@ -57,7 +57,8 @@
   margin-left: 0.7em;
 }
 .main-logo {
-  height: 200px;
+  height: 25vh;
+  width: auto;
   margin-left: auto;
   margin-right: auto;
   display: block;
