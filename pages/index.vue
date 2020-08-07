@@ -1,5 +1,6 @@
 <template>
   <section v-if="!$auth.loggedIn" class="section">
+    <Logo class="main-logo" />
     <h1 class="title">
       Hallo und Herzlich Willkommen bei Forest
     </h1>
@@ -55,12 +56,23 @@
 .tree-link {
   margin-left: 0.7em;
 }
+.main-logo{
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
 </style>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import Logo from '@/components/Logo.vue';
 
-@Component
+@Component({
+  components: {
+    Logo,
+  }
+})
 export default class IndexView extends Vue {
   entries = [];
   loading = true;

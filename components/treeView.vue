@@ -56,7 +56,8 @@
             v-model="link.url"
             required
             type="url"
-            oninput="this.setCustomValidity('URLs müssen mit https:// beginnen')"
+            oninvalid="this.setCustomValidity('URLs müssen mit https:// beginnen')"
+            oninput="this.setCustomValidity('')"
           />
         </b-field>
         <b-button
@@ -87,7 +88,8 @@
           <b-input
             v-model="value.socialLinks[key]"
             type="url"
-            oninput="this.setCustomValidity('URLs müssen mit https:// beginnen')"
+            oninvalid="this.setCustomValidity('URLs müssen mit https:// beginnen')"
+            oninput="this.setCustomValidity('')"
           />
         </b-field>
       </b-field>
