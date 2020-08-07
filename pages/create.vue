@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <tree-view v-model="tree" @submit="submit" />
-    <b-field grouped>
+    <b-field grouped style="margin-top: 15px">
       <div class="control is-expanded">
         <b-button @click="cancel">
           Abbrechen
