@@ -1,18 +1,20 @@
 <template>
   <section v-if="!$auth.loggedIn" class="section">
     <Logo class="main-logo" />
-    <h1 class="title">
-      Hallo und Herzlich Willkommen bei Forest
-    </h1>
-    <p>
-      Hallo lieber Aktivisti. Das hier ist Forest, unser Linktree-Service. Um
-      den zu benutzen brauchst du einen Cloud-Account. Logge dich ein und dann
-      kannst du dir selber Linktrees erstellen.
-    </p>
-    <div style="margin-top: 20px">
-      <b-button v-if="!$auth.loggedIn" @click="login">
-        Login
-      </b-button>
+    <div class="container">
+      <h1 class="title">
+        Hallo und Herzlich Willkommen bei Forest
+      </h1>
+      <p>
+        Hallo lieber Aktivisti. Das hier ist Forest, unser Linktree-Service. Um
+        den zu benutzen brauchst du einen Cloud-Account. Logge dich ein und dann
+        kannst du dir selber Linktrees erstellen.
+      </p>
+      <div style="margin-top: 20px">
+        <b-button v-if="!$auth.loggedIn" @click="login">
+          Login
+        </b-button>
+      </div>
     </div>
   </section>
   <section v-else class="section">
