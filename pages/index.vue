@@ -26,13 +26,21 @@
       role="button"
       @click="editCard(entry.name)"
     >
-      <div class="column has-text-centered">
+      <div class="column has-text-centered is-hidden-mobile">
         {{ entry.friendlyName }}
       </div>
-      <div class="column has-text-centered">
+      <div class="column has-text-centered is-hidden-mobile">
         <a :href="'https://ffftre.es/' + entry.name" target="_blank">
           {{ ' ffftre.es/' + entry.name }}
         </a>
+      </div>
+      <div class="column has-text-centered is-hidden-tablet">
+        <div>
+          {{ entry.friendlyName }} <span> | </span>
+          <a :href="'https://ffftre.es/' + entry.name" target="_blank">
+            {{ ' ffftre.es/' + entry.name }}
+          </a>
+        </div>
       </div>
       <div v-if="entry.owner === $auth.user.sub" class="column">
         <b-button
@@ -54,7 +62,7 @@
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 @media screen and (max-width: 768px) {
   .delete-button {
     width: 40%;
