@@ -41,32 +41,35 @@
           title="Die Links des Linktrees, die 'Äste'"
         />
       </label>
-      <b-field
+      <div
         v-for="(link, i) of links"
         :key="i"
-        horizontal
-        custom-class="is-hidden"
-        class="box"
+        class="box columns is-centered is-vcentered"
       >
-        <b-field label="Text" label-position="on-border">
-          <b-input v-model="link.text" required />
-        </b-field>
-        <b-field label="URL" label-position="on-border">
-          <b-input
-            v-model="link.url"
-            required
-            type="url"
-            oninvalid="this.setCustomValidity('URLs müssen mit https:// beginnen')"
-            oninput="this.setCustomValidity('')"
+        <b-field horizontal custom-class="is-hidden" class="column link-data">
+          <b-field label="Text" label-position="on-border">
+            <b-input v-model="link.text" required />
+          </b-field>
+          <b-field label="URL" label-position="on-border">
+            <b-input
+              v-model="link.url"
+              required
+              type="url"
+              oninvalid="this.setCustomValidity('URLs müssen mit https:// beginnen')"
+              oninput="this.setCustomValidity('')"
+            />
+          </b-field>
+          <b-button
+            icon-right="delete"
+            type="is-danger"
+            expanded
+            @click="removeLink(i)"
           />
         </b-field>
-        <b-button
-          icon-right="delete"
-          type="is-danger"
-          expanded
-          @click="removeLink(i)"
-        />
-      </b-field>
+        <div class="column has-text-centered drag-drop-icon is-1">
+          <b-icon icon="menu" size="is-medium" type="is-grey" />
+        </div>
+      </div>
       <b-button expanded icon-right="plus" size="is-medium" @click="addLink">
       </b-button>
     </section>
@@ -132,6 +135,19 @@
 <style>
 .social-link {
   text-transform: capitalize;
+}
+.drag-drop-icon {
+  padding: 0;
+}
+.link-data {
+  margin: 0 !important;
+}
+.box {
+  padding: 1rem;
+}
+
+.columns {
+  margin-top: 0;
 }
 </style>
 <script lang="ts">
