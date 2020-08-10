@@ -43,17 +43,18 @@
       </label>
       <div ref="linkContainer" style="position: relative;">
         <div
-          v-if="drag"
+          v-show="drag"
           id="drag"
           ref="drag"
           class="box columns is-centered is-vcentered"
         >
           <b-field horizontal custom-class="is-hidden" class="column link-data">
             <b-field label="Text" label-position="on-border">
-              <b-input v-model="drag.text" required />
+              <b-input v-if="drag" v-model="drag.text" required />
             </b-field>
             <b-field label="URL" label-position="on-border">
               <b-input
+                v-if="drag"
                 v-model="drag.url"
                 required
                 type="url"
@@ -309,18 +310,16 @@ export default class TreeView extends Vue {
     });
   }
 
-  async initDragAndDrop(event: {
-    pageX: number;
-    pageY: number;
-    target: Element;
-  }) {
+  initDragAndDrop(event: { pageX: number; pageY: number; target: Element }) {
     const realTarget = event.target!.parentElement!.parentElement!
       .parentElement!;
     const width = realTarget.offsetWidth + 'px';
-    const linkList = this.$refs.linkList as Element[];
-    const index = linkList.findIndex((element) => element === realTarget);
+    const linkList = this.$refs.linkList as HTMLElement[];
+    const index = linkList
+      .sort((a, b) => a.offsetTop - b.offsetTop)
+      .findIndex((element) => element === realTarget);
     this.drag = this.links.splice(index, 1)[0];
-    await this.$nextTick();
+    linkList.splice(index, 1);
 
     const drag = this.$refs.drag as HTMLElement;
     drag.style.width = width;
@@ -340,6 +339,7 @@ export default class TreeView extends Vue {
     const containerRect = linkContainer.getBoundingClientRect();
     const containerTop = containerRect.top + document.documentElement.scrollTop;
     const containerHeight = containerRect.height;
+    realTarget.style.display = 'none';
     const onMouseMove = (event: { pageX: number; pageY: number }) => {
       // Moving the dragged element
       const relativeScroll = event.pageY - containerTop;
