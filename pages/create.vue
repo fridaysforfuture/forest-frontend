@@ -64,7 +64,15 @@ export default class CreateView extends Vue {
         this.$router.push({ name: 'index' });
       })
       .catch((e) => {
-        alert(e);
+        if (e.response?.status === 401) {
+          this.$buefy.dialog.alert({
+            title: 'Erstellen fehlgeschlagen',
+            message:
+              'Den Eintrag den du erstellen wolltest scheint es schon zu geben',
+            type: 'is-danger',
+            hasIcon: true,
+          });
+        }
       });
   }
 }
