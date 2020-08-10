@@ -302,10 +302,6 @@ export default class TreeView extends Vue {
     this.sharedTo.splice(index, 1);
   }
 
-  mounted() {
-    document.body.append(this.$refs.drag as Element);
-  }
-
   initDragAndDropTouch(event: TouchEvent) {
     this.initDragAndDrop({
       ...(event.touches.item(0) as Touch),
