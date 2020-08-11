@@ -7,12 +7,20 @@
         </b-navbar-item>
       </template>
       <template slot="end">
+        <b-navbar-item v-if="$auth.loggedIn" tag="div">
+          <div>
+            Eingeloggt als
+            <span class="has-text-weight-semibold">{{ $auth.user.sub }}</span>
+          </div>
+        </b-navbar-item>
         <b-navbar-item tag="div">
-          <div class="buttons">
-            <b-button v-if="!$auth.loggedIn" @click="login">
+          <div v-if="!$auth.loggedIn" class="buttons">
+            <b-button @click="login">
               Login
             </b-button>
-            <b-button v-else @click="logout">
+          </div>
+          <div v-else class="buttons">
+            <b-button @click="logout">
               Logout
             </b-button>
           </div>
