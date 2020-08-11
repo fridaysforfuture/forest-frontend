@@ -80,8 +80,8 @@
         <transition-group name="flip-list">
           <div
             v-for="(link, i) of links"
+            :key="link.id"
             ref="linkList"
-            :key="link.url + link.name"
             class="box columns is-centered is-vcentered"
           >
             <b-field
@@ -237,7 +237,18 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
-@Component
+@Component({
+  watch: {
+    value(newValue) {
+      for (const link of newValue.links) {
+        if (!link.id) {
+          const thisValue = this as TreeView;
+          link.id = ++thisValue.lastId;
+        }
+      }
+    },
+  },
+})
 export default class TreeView extends Vue {
   @Prop(Object) value: any;
   @Prop(Boolean) disableNameEdit!: boolean;
@@ -284,10 +295,13 @@ export default class TreeView extends Vue {
     }
   }
 
+  lastId = 0;
+
   addLink() {
     this.links.push({
       text: '',
       url: '',
+      id: ++this.lastId,
     });
   }
 
