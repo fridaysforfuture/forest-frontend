@@ -168,35 +168,6 @@
         </b-field>
       </b-field>
     </section>
-    <section class="field">
-      <label class="label is-size-4 has-text-weight-bold">
-        Eigene Bilder:
-        <b-icon
-          icon="information"
-          type="is-info"
-          custom-size="mdi-24px"
-          title="Das Logo, welches über dem Linktree angezeigt wird"
-        />
-      </label>
-      <div class="columns is-centered is-vcentered">
-        <div class="column is-2 has-text-centered">
-          <img :src="profilePreviewUrl" class="preview" />
-        </div>
-        <b-field class="column has-text-centered is-3">
-          <b-button id="logo-dashboard-trigger">
-            Eigenes Logo hochladen
-          </b-button>
-        </b-field>
-        <div class="column is-2 has-text-centered">
-          <img :src="backgroundPreviewUrl" class="preview" />
-        </div>
-        <b-field class="column has-text-centered is-3">
-          <b-button id="background-dashboard-trigger">
-            Eigenes Hintergrundbild hochladen
-          </b-button>
-        </b-field>
-      </div>
-    </section>
     <div class="divider"></div>
     <section v-if="value && $auth.user.sub === value.owner" class="field">
       <label class="label">
@@ -233,12 +204,6 @@
   </form>
 </template>
 <style>
-.preview {
-  display: block;
-  margin: auto;
-  max-width: 150px;
-  max-height: 150px;
-}
 @media screen and (max-width: 768px) {
   .flip-list-move {
     transition: transform 1s;
@@ -271,8 +236,6 @@
 </style>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Uppy, StrictTypes as UppyStrictTypes } from '@uppy/core';
-import Dashboard from '@uppy/dashboard';
 
 @Component({
   watch: {
@@ -291,58 +254,6 @@ export default class TreeView extends Vue {
   @Prop(Boolean) disableNameEdit!: boolean;
 
   drag = null;
-
-  profilePreviewUrl: string | null = null;
-  backgroundPreviewUrl: string | null = null;
-
-  mounted() {
-    const createUppy = (trigger: string, setURL: (dataURL: string) => any) => {
-      const uppy = new Uppy<UppyStrictTypes>({
-        id: 'Core' + trigger,
-        allowMultipleUploads: false,
-        restrictions: {
-          maxFileSize: 10 * 1024 * 1024,
-          maxNumberOfFiles: 1,
-          allowedFileTypes: ['image/jpeg', 'image/png'],
-        },
-        autoProceed: true,
-      });
-      uppy.use(Dashboard, {
-        id: 'Dashboard' + trigger,
-        target: 'body',
-        trigger,
-        showLinkToFileUploadResult: false,
-        note: '1 .png/.jpg Datei, maximal 10 MB',
-        closeModalOnClickOutside: true,
-        closeAfterFinish: true,
-        theme: 'auto',
-      });
-      uppy.on('complete', (result) => {
-        if (result.successful.length === 1) {
-          const reader = new FileReader();
-          reader.addEventListener(
-            'load',
-            () => {
-              setURL(reader.result as string);
-            },
-            false,
-          );
-
-          const file = result.successful[0].data;
-          reader.readAsDataURL(file);
-        }
-      });
-    };
-
-    createUppy(
-      '#logo-dashboard-trigger',
-      (dataURL) => (this.profilePreviewUrl = dataURL),
-    );
-    createUppy(
-      '#background-dashboard-trigger',
-      (dataURL) => (this.backgroundPreviewUrl = dataURL),
-    );
-  }
 
   get name() {
     return this.value?.name;
