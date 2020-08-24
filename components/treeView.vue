@@ -180,7 +180,9 @@
       </label>
       <div class="columns is-centered is-vcentered">
         <div class="column is-2 has-text-centered">
-          <img :src="profilePreviewUrl" class="preview" />
+          <div class="preview-box">
+            <img :src="profilePreviewUrl" class="preview" />
+          </div>
         </div>
         <b-field class="column has-text-centered is-3">
           <b-button id="logo-dashboard-trigger">
@@ -188,7 +190,9 @@
           </b-button>
         </b-field>
         <div class="column is-2 has-text-centered">
-          <img :src="backgroundPreviewUrl" class="preview" />
+          <div class="preview-box">
+            <img :src="backgroundPreviewUrl" class="preview" />
+          </div>
         </div>
         <b-field class="column has-text-centered is-3">
           <b-button id="background-dashboard-trigger">
@@ -233,6 +237,15 @@
   </form>
 </template>
 <style>
+.preview-box {
+  display: flex;
+  align-items: center;
+  width: 154px;
+  height: 154px;
+  border: 2px solid #cccccc;
+  background: #eeeeee;
+  margin: auto;
+}
 .preview {
   display: block;
   margin: auto;
@@ -296,7 +309,11 @@ export default class TreeView extends Vue {
   backgroundPreviewUrl: string | null = null;
 
   mounted() {
-    const createUppy = (trigger: string, setURL: (dataURL: string) => any) => {
+    const createUppy = (
+      trigger: string,
+      setURL: (dataURL: string) => any,
+      setFile: (file: File) => any,
+    ) => {
       const uppy = new Uppy<UppyStrictTypes>({
         id: 'Core' + trigger,
         allowMultipleUploads: false,
@@ -329,6 +346,7 @@ export default class TreeView extends Vue {
           );
 
           const file = result.successful[0].data;
+          setFile(file);
           reader.readAsDataURL(file);
         }
       });
@@ -337,10 +355,12 @@ export default class TreeView extends Vue {
     createUppy(
       '#logo-dashboard-trigger',
       (dataURL) => (this.profilePreviewUrl = dataURL),
+      (file) => (this.value.logo = file),
     );
     createUppy(
       '#background-dashboard-trigger',
       (dataURL) => (this.backgroundPreviewUrl = dataURL),
+      (file) => (this.value.background = file),
     );
   }
 
