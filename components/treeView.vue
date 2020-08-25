@@ -296,11 +296,22 @@ import Dashboard from '@uppy/dashboard';
 @Component({
   watch: {
     value(newValue) {
+      const thisValue = this as TreeView;
+
       for (const link of newValue.links) {
         if (!link.id) {
-          const thisValue = this as TreeView;
-          link.id = ++thisValue.lastId;
+          link.id = Math.random();
         }
+      }
+      if (newValue.logo) {
+        thisValue.profilePreviewUrl =
+          this.$axios.defaults.baseURL + '/resources/' + newValue.logo;
+        delete newValue.logo;
+      }
+      if (newValue.background) {
+        thisValue.backgroundPreviewUrl =
+          this.$axios.defaults.baseURL + '/resources/' + newValue.background;
+        delete newValue.background;
       }
     },
   },
