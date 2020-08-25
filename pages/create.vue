@@ -53,12 +53,20 @@ export default class CreateView extends Vue {
   }
 
   submit() {
+    const formData = new FormData();
+    Object.keys(this.tree).forEach((key) => {
+      const value = (this.tree as any)[key];
+      if (value instanceof Blob) {
+        formData.append(key, value);
+      } else {
+        formData.append(key, JSON.stringify(value));
+      }
+    });
     this.$axios
-      .$put(`entries/${this.tree.name}`, {
-        friendlyName: this.tree.friendlyName,
-        links: this.tree.links,
-        socialLinks: this.tree.socialLinks,
-        sharedTo: this.tree.sharedTo,
+      .$put(`entries/${this.tree.name}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       })
       .then(() => {
         this.$router.push({ name: 'index' });
