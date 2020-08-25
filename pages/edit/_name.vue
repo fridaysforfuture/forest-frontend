@@ -43,7 +43,20 @@ export default class EditView extends Vue {
 
   save() {
     if (this.entry) {
-      this.$axios.$put(`entries/${this.entry.name}`, this.entry);
+      const formData = new FormData();
+      Object.keys(this.entry).forEach((key) => {
+        const value = this.entry[key];
+        if (value instanceof Blob) {
+          formData.append(key, value);
+        } else {
+          formData.append(key, JSON.stringify(value));
+        }
+      });
+      this.$axios.$put(`entries/${this.entry.name}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       this.$router.push({ name: 'index' });
     }
   }
