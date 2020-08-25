@@ -179,24 +179,30 @@
         />
       </label>
       <div class="columns is-centered is-vcentered">
-        <div class="column is-2 has-text-centered">
+        <div class="column is-3 has-text-centered">
           <div class="preview-box">
             <img :src="profilePreviewUrl" class="preview" />
           </div>
         </div>
         <b-field class="column has-text-centered is-3">
-          <b-button id="logo-dashboard-trigger">
-            Eigenes Logo hochladen
+          <b-button
+            id="logo-dashboard-trigger"
+            @click="logoDashboard.openModal()"
+          >
+            Logo hochladen
           </b-button>
         </b-field>
-        <div class="column is-2 has-text-centered">
+        <div class="column is-3 has-text-centered">
           <div class="preview-box">
             <img :src="backgroundPreviewUrl" class="preview" />
           </div>
         </div>
         <b-field class="column has-text-centered is-3">
-          <b-button id="background-dashboard-trigger">
-            Eigenes Hintergrundbild hochladen
+          <b-button
+            id="background-dashboard-trigger"
+            @click="backgroundDashboard.openModal()"
+          >
+            Hintergrundbild hochladen
           </b-button>
         </b-field>
       </div>
@@ -312,7 +318,8 @@ export default class TreeView extends Vue {
     const createUppy = (
       trigger: string,
       setURL: (dataURL: string) => any,
-      setFile: (file: File) => any,
+      setFile: (file: File | Blob) => any,
+      setDashboard: (dashboard: Dashboard) => any,
     ) => {
       const uppy = new Uppy<UppyStrictTypes>({
         id: 'Core' + trigger,
@@ -327,13 +334,13 @@ export default class TreeView extends Vue {
       uppy.use(Dashboard, {
         id: 'Dashboard' + trigger,
         target: 'body',
-        trigger,
         showLinkToFileUploadResult: false,
         note: '1 .png/.jpg Datei, maximal 10 MB',
         closeModalOnClickOutside: true,
         closeAfterFinish: true,
         theme: 'auto',
       });
+      setDashboard(uppy.getPlugin('Dashboard' + trigger) as Dashboard);
       uppy.on('complete', (result) => {
         if (result.successful.length === 1) {
           const reader = new FileReader();
@@ -356,13 +363,18 @@ export default class TreeView extends Vue {
       '#logo-dashboard-trigger',
       (dataURL) => (this.profilePreviewUrl = dataURL),
       (file) => (this.value.logo = file),
+      (dashboard) => (this.logoDashboard = dashboard),
     );
     createUppy(
       '#background-dashboard-trigger',
       (dataURL) => (this.backgroundPreviewUrl = dataURL),
       (file) => (this.value.background = file),
+      (dashboard) => (this.backgroundDashboard = dashboard),
     );
   }
+
+  logoDashboard!: Dashboard;
+  backgroundDashboard!: Dashboard;
 
   get name() {
     return this.value?.name;
