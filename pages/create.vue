@@ -33,6 +33,7 @@ export default class CreateView extends Vue {
       {
         text: '',
         url: '',
+        id: -1,
       },
     ],
     socialLinks: {
