@@ -31,7 +31,10 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxt/typescript-build'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/pwa'
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -43,6 +46,21 @@ export default {
     '@nuxtjs/auth-next',
     '@nuxtjs/pwa',
   ],
+  /*
+   ** PWA Configuration
+   */
+  pwa: {
+    meta: {
+      name: 'Forest',
+      lang: 'de'
+    },
+    manifest: {
+      name: 'Forest',
+      lang: 'de',
+      useWebmanifestExtension: false
+    }
+  },
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
