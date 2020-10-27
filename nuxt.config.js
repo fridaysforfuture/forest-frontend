@@ -31,10 +31,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [
-    '@nuxt/typescript-build',
-    '@nuxtjs/pwa'
-  ],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/pwa'],
   /*
    ** Nuxt.js modules
    */
@@ -52,13 +49,14 @@ export default {
   pwa: {
     meta: {
       name: 'Forest',
-      lang: 'de'
+      lang: 'de',
     },
     manifest: {
       name: 'Forest',
+      short_name: 'Forest',
       lang: 'de',
-      useWebmanifestExtension: false
-    }
+      useWebmanifestExtension: false,
+    },
   },
 
   /*
