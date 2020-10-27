@@ -53,6 +53,7 @@ export default {
     },
     manifest: {
       name: 'Forest',
+      short_name: 'Forest',
       lang: 'de',
       useWebmanifestExtension: false,
     },
