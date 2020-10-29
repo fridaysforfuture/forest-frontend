@@ -55,7 +55,7 @@ export default {
       name: 'Forest',
       short_name: 'Forest',
       lang: 'de',
-      useWebmanifestExtension: false,
+      useWebmanifestExtension: true,
     },
   },
 
@@ -86,9 +86,12 @@ export default {
       local: false,
       oauth2: {
         endpoints: {
-          authorization: 'https://auth.websiteag.lol/auth',
-          token: 'https://auth.websiteag.lol/token',
-          userInfo: 'https://auth.websiteag.lol/userinfo',
+          authorization:
+            'https://auth.fffutu.re/auth/realms/FridaysForFuture/protocol/openid-connect/auth',
+          token:
+            'https://auth.fffutu.re/auth/realms/FridaysForFuture/protocol/openid-connect/token',
+          userInfo:
+            'https://auth.fffutu.re/auth/realms/FridaysForFuture/protocol/openid-connect/userinfo',
         },
         token: {
           maxAge: 600,
