@@ -169,7 +169,7 @@
       </b-field>
     </section>
     <div class="divider"></div>
-    <section v-if="value && $auth.user.sub === value.owner" class="field">
+    <section v-if="value && $auth.user.sub === value.owner" class="field pb-20">
       <label class="label">
         <span class="has-text-weight-bold is-size-4">
           Geteilt mit:
@@ -200,6 +200,20 @@
       </b-field>
       <b-button expanded icon-right="plus" size="is-medium" @click="addShare">
       </b-button>
+    </section>
+    <section v-else class="field pb-20">
+      <label class="label">
+        <span class="has-text-weight-bold is-size-4">
+          Tree Admin
+        </span>
+        <b-icon
+          icon="information"
+          type="is-info"
+          custom-size="mdi-24px"
+          title="Diese Person hat den Baum gepflanzt und kann einstellen wer Zugriff hat."
+        />
+      </label>
+      <p>{{ value.owner }}</p>
     </section>
   </form>
 </template>
@@ -232,6 +246,9 @@
 
 .placeholder {
   height: 60px;
+}
+.pb-20 {
+  padding-bottom: 20px;
 }
 </style>
 <script lang="ts">
