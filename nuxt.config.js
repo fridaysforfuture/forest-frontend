@@ -23,7 +23,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['assets/darkmode.scss'],
+  css: ['assets/darkmode.scss', 'assets/micons.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -37,7 +37,7 @@ export default {
    */
   modules: [
     // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy',
+    ['nuxt-buefy', { materialDesignIcons: false }],
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
