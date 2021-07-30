@@ -1,24 +1,18 @@
 <template>
   <section v-if="!$auth.loggedIn" class="section">
     <Logo class="main-logo" />
-    <h1 class="title">
-      Hallo und Herzlich Willkommen bei Forest
-    </h1>
+    <h1 class="title">Hallo und Herzlich Willkommen bei Forest</h1>
     <p>
       Hallo lieber Aktivisti. Das hier ist Forest, unser Linktree-Service. Um
       den zu benutzen brauchst du einen Cloud-Account. Logge dich ein und dann
       kannst du dir selber Linktrees erstellen.
     </p>
     <div style="margin-top: 20px">
-      <b-button v-if="!$auth.loggedIn" @click="login">
-        Login
-      </b-button>
+      <b-button v-if="!$auth.loggedIn" @click="login"> Login </b-button>
     </div>
   </section>
   <section v-else class="section">
-    <h1 class="title">
-      Meine Linktrees:
-    </h1>
+    <h1 class="title">Meine Linktrees:</h1>
     <div
       v-for="entry of entries"
       :key="entry.name"
@@ -61,28 +55,6 @@
     </b-button>
   </section>
 </template>
-
-<style scoped lang="scss">
-@media screen and (max-width: 768px) {
-  .delete-button {
-    width: 40%;
-    margin: auto;
-    display: block;
-  }
-}
-@media screen and (min-width: 769px) {
-  .delete-button {
-    float: right;
-  }
-}
-.main-logo {
-  height: 25vh;
-  width: auto;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-</style>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
@@ -159,3 +131,25 @@ export default class IndexView extends Vue {
   }
 }
 </script>
+
+<style scoped lang="scss">
+@media screen and (max-width: 768px) {
+  .delete-button {
+    width: 40%;
+    margin: auto;
+    display: block;
+  }
+}
+@media screen and (min-width: 769px) {
+  .delete-button {
+    float: right;
+  }
+}
+.main-logo {
+  height: 25vh;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+</style>

@@ -15,14 +15,10 @@
         </b-navbar-item>
         <b-navbar-item tag="div">
           <div v-if="!$auth.loggedIn" class="buttons">
-            <b-button @click="login">
-              Login
-            </b-button>
+            <b-button @click="login"> Login </b-button>
           </div>
           <div v-else class="buttons">
-            <b-button @click="logout">
-              Logout
-            </b-button>
+            <b-button @click="logout"> Logout </b-button>
           </div>
         </b-navbar-item>
       </template>
@@ -31,12 +27,6 @@
     <nuxt />
   </div>
 </template>
-
-<style>
-.navbar-item {
-  margin: 0;
-}
-</style>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
@@ -52,3 +42,9 @@ export default class LayoutComponent extends Vue {
   }
 }
 </script>
+
+<style>
+.navbar-item {
+  margin: 0;
+}
+</style>

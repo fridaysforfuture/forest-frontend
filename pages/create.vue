@@ -3,9 +3,7 @@
     <tree-view v-model="tree" @submit="submit" />
     <b-field grouped style="margin-top: 15px">
       <div class="control is-expanded">
-        <b-button @click="cancel">
-          Abbrechen
-        </b-button>
+        <b-button @click="cancel"> Abbrechen </b-button>
       </div>
       <div class="control is-success">
         <b-button native-type="submit" class="is-success" form="tree-view">
