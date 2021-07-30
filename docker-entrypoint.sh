@@ -1,3 +1,3 @@
 #!/bin/sh
 
-nuxt start
+HOST=0.0.0.0 yarn start
