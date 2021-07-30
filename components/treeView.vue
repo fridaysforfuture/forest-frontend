@@ -31,9 +31,7 @@
     </b-field>
     <section class="field">
       <label class="label">
-        <span class="has-text-weight-bold is-size-4">
-          Links:
-        </span>
+        <span class="has-text-weight-bold is-size-4"> Links: </span>
         <b-icon
           icon="information"
           type="is-info"
@@ -41,7 +39,7 @@
           title="Die Links des Linktrees, die 'Äste'"
         />
       </label>
-      <div ref="linkContainer" style="position: relative;">
+      <div ref="linkContainer" style="position: relative">
         <div
           v-show="drag"
           id="drag"
@@ -109,7 +107,12 @@
               />
             </b-field>
             <div
-              class="column has-text-centered drag-drop-icon is-1 is-hidden-mobile"
+              class="
+                column
+                has-text-centered
+                drag-drop-icon
+                is-1 is-hidden-mobile
+              "
               @mousedown="initDragAndDrop($event)"
               @touchstart="initDragAndDropTouch($event)"
             >
@@ -171,9 +174,7 @@
     <div class="divider"></div>
     <section v-if="value && $auth.user.sub === value.owner" class="field pb-20">
       <label class="label">
-        <span class="has-text-weight-bold is-size-4">
-          Geteilt mit:
-        </span>
+        <span class="has-text-weight-bold is-size-4"> Geteilt mit: </span>
         <b-icon
           icon="information"
           type="is-info"
@@ -203,9 +204,7 @@
     </section>
     <section v-else class="field pb-20">
       <label class="label">
-        <span class="has-text-weight-bold is-size-4">
-          Tree Admin
-        </span>
+        <span class="has-text-weight-bold is-size-4"> Tree Admin </span>
         <b-icon
           icon="information"
           type="is-info"
@@ -217,40 +216,7 @@
     </section>
   </form>
 </template>
-<style>
-@media screen and (max-width: 768px) {
-  .flip-list-move {
-    transition: transform 1s;
-  }
-}
-#drag {
-  position: absolute;
-  z-index: 1000;
-}
-.social-link {
-  text-transform: capitalize;
-}
-.drag-drop-icon {
-  padding: 0;
-}
-.link-data {
-  margin: 0 !important;
-}
-.box {
-  padding: 1rem;
-}
 
-.columns {
-  margin-top: 0;
-}
-
-.placeholder {
-  height: 60px;
-}
-.pb-20 {
-  padding-bottom: 20px;
-}
-</style>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
@@ -342,8 +308,8 @@ export default class TreeView extends Vue {
   }
 
   initDragAndDrop(event: { pageX: number; pageY: number; target: Element }) {
-    const realTarget = event.target!.parentElement!.parentElement!
-      .parentElement!;
+    const realTarget =
+      event.target!.parentElement!.parentElement!.parentElement!;
     const width = realTarget.offsetWidth + 'px';
     const linkList = this.$refs.linkList as HTMLElement[];
     const index = linkList
@@ -461,3 +427,37 @@ export default class TreeView extends Vue {
   }
 }
 </script>
+<style>
+@media screen and (max-width: 768px) {
+  .flip-list-move {
+    transition: transform 1s;
+  }
+}
+#drag {
+  position: absolute;
+  z-index: 1000;
+}
+.social-link {
+  text-transform: capitalize;
+}
+.drag-drop-icon {
+  padding: 0;
+}
+.link-data {
+  margin: 0 !important;
+}
+.box {
+  padding: 1rem;
+}
+
+.columns {
+  margin-top: 0;
+}
+
+.placeholder {
+  height: 60px;
+}
+.pb-20 {
+  padding-bottom: 20px;
+}
+</style>

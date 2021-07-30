@@ -3,9 +3,7 @@
     <tree-view v-model="entry" disable-name-edit @submit="save"> </tree-view>
     <b-field grouped>
       <div class="control is-expanded">
-        <b-button @click="cancel">
-          Abbrechen
-        </b-button>
+        <b-button @click="cancel"> Abbrechen </b-button>
       </div>
       <div class="control">
         <b-button
