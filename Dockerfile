@@ -7,4 +7,4 @@ RUN yarn upgrade
 RUN yarn install && NODE_ENV=production yarn build
 EXPOSE 3000
 
-ENTRYPOINT [ "./docker-entrypoint.sh" ]
+ENTRYPOINT [ "yarn start" ]
