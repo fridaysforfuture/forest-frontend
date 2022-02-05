@@ -107,12 +107,7 @@
               />
             </b-field>
             <div
-              class="
-                column
-                has-text-centered
-                drag-drop-icon
-                is-1 is-hidden-mobile
-              "
+              class="column has-text-centered drag-drop-icon is-1 is-hidden-mobile"
               @mousedown="initDragAndDrop($event)"
               @touchstart="initDragAndDropTouch($event)"
             >
@@ -212,7 +207,7 @@
           title="Diese Person hat den Baum gepflanzt und kann einstellen wer Zugriff hat."
         />
       </label>
-      <p>{{ value.owner }}</p>
+      <p v-if="value && value.owner">{{ value.owner }}</p>
     </section>
   </form>
 </template>
