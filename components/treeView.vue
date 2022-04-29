@@ -155,7 +155,7 @@
           title="Die Social-Media-Links, die unter dem Linktree angezeigt werden."
         />
       </label>
-      <b-field v-for="(_, key) in value.socialLinks" :key="key">
+      <b-field v-for="key in socialLinkFields" :key="key">
         <b-field :label="key + ':'" horizontal class="social-link">
           <b-input
             v-model="value.socialLinks[key]"
@@ -232,6 +232,19 @@ export default class TreeView extends Vue {
   @Prop(Boolean) disableNameEdit!: boolean;
 
   drag = null;
+
+  socialLinkFields: string[] = [
+    'telegram',
+    'whatsapp',
+    'instagram',
+    'twitter',
+    'facebook',
+    'website',
+    'matrix',
+    'signal',
+    'tiktok',
+    'mastodon',
+  ];
 
   get name() {
     return this.value?.name;
