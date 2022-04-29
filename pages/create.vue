@@ -45,6 +45,7 @@ export default class CreateView extends Vue {
       matrix: '',
       signal: '',
       tiktok: '',
+      mastodon: '',
     },
     sharedTo: [],
     owner: this.$auth.user.sub,
