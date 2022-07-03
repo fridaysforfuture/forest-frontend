@@ -244,6 +244,7 @@ export default class TreeView extends Vue {
     'signal',
     'tiktok',
     'mastodon',
+    'linkedin',
   ];
 
   get name() {
