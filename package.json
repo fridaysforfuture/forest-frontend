@@ -21,7 +21,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "bulma-prefers-dark": "0.1.0-beta.0",
     "node-sass": "^6.0.1",
-    "nuxt": "^2.15",
+    "nuxt": "^3.4",
     "nuxt-buefy": "^0.4.8",
     "sass-loader": "^10.0.0",
     "vue-class-component": "^7.2",
